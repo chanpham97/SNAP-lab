@@ -109,5 +109,33 @@ let applicants = [
   
 // Follow the instructions in the README.md to build out the digitized SNAP benefits system
 // You should end up with one big for loop with a conditional statement inside that approves or denies the application
+// Task 1
+for (let i = 0; i < applicants.length; i++){
+  console.log(`Application: ${applicants[i].name}`)
 
+  // Task 2
+  if (applicants[i].state !== "IN"){
+    console.log(`This application is for Indiana applicants. Please apply in ${applicants[i].state}.`)
+  } 
+  // Task 3
+  else if (applicants[i].dependents.length > 0 && applicants[i].householdSize > 2 && applicants[i].grossMonthlyIncome < 1000) {
+    console.log(`You are approved!`)
+  } 
+  // Task 4: There are a lot of valid alternate conditions, there are just some examples (you needed 2)
+  else if (applicants[i].dependents.length >= 0 && applicants[i].householdSize >= 2 && applicants[i].grossMonthlyIncome <= 1000) {
+    console.log(`Your case is being forwarded to a case worker for further review.`)
+  } else if (applicants[i].grossMonthlyIncome <= 1200 && applicants[i].dependents.length > 2){ 
+    console.log(`Your case is being forwarded to a case worker for further review.`)
+  } else if (applicants[i].pastApplications.length >= 2){ 
+    console.log(`Your case is being forwarded to a case worker for further review.`)
+  } else {
+    console.log(`Your application was denied as it did not meet one of the following requirements.`)
+    console.log(`- Household size is greater than 2`)
+    console.log(`- Number of dependents is greater than 0`)
+    console.log(`- Monthly income is less than 1000`)
+    console.log(`If you believe you should have been approved, please call the SNAP office.`)
+  }
+  // Added for extra space between applications (optional)
+  console.log()
+}
 
